@@ -4,6 +4,7 @@
       v-model="drawer"
       fixed
       app
+      :style="{background: $vuetify.theme.themes.dark.background2}"
     >
       <!-- deneme -->
       <template v-slot:prepend>
@@ -43,6 +44,7 @@
     <v-app-bar
       fixed
       app
+      :style="{background: $vuetify.theme.themes.dark.background2}"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
@@ -76,6 +78,11 @@ export default {
           icon: 'mdi-view-dashboard',
           title: 'Dashboard',
           to: '/dashboard'
+        },
+        {
+          icon: 'person',
+          title: 'Profile',
+          to: '/profile'
         },
         {
           icon: 'mdi-chart-bubble',
