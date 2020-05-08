@@ -15,7 +15,7 @@
           {{ profile.firstName }} {{ profile.lastName }}
         </v-card-title>
         <v-card-subtitle class="text-center">
-          @{{ tprofile.username }}
+          @{{ profile.username }}
         </v-card-subtitle>
         <v-card-text>{{ profile.post }}</v-card-text>
         <v-card-actions class="justify-center">

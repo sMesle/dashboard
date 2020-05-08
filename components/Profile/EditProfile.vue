@@ -1,6 +1,4 @@
 <template>
-  <!-- <v-container>
-    <v-row> -->
   <v-col :style="{background: $vuetify.theme.themes.dark.background1}">
     <v-form @submit.prevent="editChanges()">
       <v-row>
@@ -91,18 +89,14 @@
           Edit Changes
         </v-btn>
       </v-row>
-      <pre>{{ this.$store.state.profile }}</pre>
     </v-form>
   </v-col>
-  <!--</v-row>
-  </v-container> -->
 </template>
 
 <script>
 export default {
   data () {
     return {
-      // user: {}
     }
   },
   computed: {
@@ -110,9 +104,6 @@ export default {
       get () {
         return this.$store.state.profile
       }
-      // set (val) {
-      //   this.$store.commit('profile/EDIT_PROFILE', val)
-      // }
     }
   },
   methods: {
@@ -124,10 +115,7 @@ export default {
         field,
         value
       })
-      // this.$set(this.user, e.target.id, e.target.value)
-      // console.log(this.user)
     }
   }
 }
 </script>
-// @change="profile.about = $event.target.value"
