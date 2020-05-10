@@ -141,23 +141,6 @@ export default {
         arr.push((Math.random() * (1000 - 1) + 1).toFixed(y))
       }
       return arr
-    },
-    editProject (item) {
-      // eslint-disable-next-line no-labels
-      TODO:
-      console.log(item) /* eslint no-console: ["error", { allow: ["log", "error"] }] */
-      if (this.editedProject.deadline.length >= 2 && (this.editedProject.progress <= 100 && this.editedProject.progress >= 0)) {
-        this.$store.commit('projects/EDIT_PROJECT', {
-          id: item.id,
-          progress: this.editedProject.progress,
-          deadline: this.editedProject.deadline
-        })
-        this.dialog = false
-        this.editedProject = {}
-      }
-    },
-    deleteProject (item) {
-      this.$store.commit('projects/DELETE_PROJECT', item.id)
     }
   }
 }

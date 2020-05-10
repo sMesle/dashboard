@@ -7,7 +7,7 @@
     hide-default-footer
     class="grey--text text--lighten-2"
   >
-    <template v-slot:top="{item}">
+    <template v-slot:top>
       <v-dialog v-model="dialog">
         <v-card>
           <v-card-title>
@@ -23,6 +23,7 @@
             <v-container>
               <v-row>
                 <v-col cols="6" offset="3">
+                  <v-text-field v-model="editedProject.name" type="text" name="name" label="Project Name" />
                   <v-text-field v-model="editedProject.deadline" type="text" name="deadline" label="Project New Deadline" />
                   <v-text-field
                     v-model="editedProject.progress"
@@ -41,10 +42,10 @@
             <v-container>
               <v-row justify="end">
                 <v-col cols="6" offset="3">
-                  <v-btn color="blue darken-1" text @click="dialog = false">
+                  <v-btn color="blue darken-1" text @click="close">
                     Cancel
                   </v-btn>
-                  <v-btn text @click="editProject(item)">
+                  <v-btn text @click="sendStore">
                     Save
                   </v-btn>
                 </v-col>
@@ -61,7 +62,7 @@
     </template>
 
     <template v-slot:item.actions="{item}">
-      <v-icon small color="grey lighten-2" @click="dialog = true">
+      <v-icon small color="grey lighten-2" @click="editProject(item)">
         mdi-pencil
       </v-icon>
       <v-icon small color="grey lighten-2" @click="deleteProject(item)">
@@ -77,7 +78,7 @@ export default {
     return {
       dialog: false,
       editedProject: {
-        // name: '',
+        name: '',
         deadline: '',
         progress: ''
       },
@@ -94,6 +95,33 @@ export default {
       get () {
         return this.$store.state.projects.projects
       }
+    }
+  },
+  methods: {
+    editProject (item) {
+      this.editedProject = Object.assign({}, item)
+      this.editedProject.editedIndex = this.projects.indexOf(item)
+      this.dialog = true
+    },
+    deleteProject (item) {
+      this.$store.commit('projects/DELETE_PROJECT', item.id)
+    },
+    sendStore () {
+      if (this.editedProject.name.length >= 2 && this.editedProject.deadline.length >= 2 && (this.editedProject.progress <= 100 && this.editedProject.progress >= 0)) {
+        this.$store.commit('projects/EDIT_PROJECT', {
+          id: this.editedProject.editedIndex,
+          name: this.editedProject.name,
+          progress: this.editedProject.progress,
+          deadline: this.editedProject.deadline
+        })
+      }
+      this.dialog = false
+      this.close()
+    },
+    close () {
+      this.dialog = false
+      this.editedProject = {}
+      this.editedProject.editedIndex = -1
     }
   }
 }
