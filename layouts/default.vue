@@ -68,12 +68,12 @@
         </NuxtLink>
       </template>
       <template v-else>
-        <v-btn text class="d-none d-sm-flex">
+        <NuxtLink class="nuxt-link" to="/dashboard">
           <span class="grey--text">Dashboard</span>
-        </v-btn>
-        <v-btn text class="d-none d-sm-flex">
+        </NuxtLink>
+        <NuxtLink class="nuxt-link" to="/register">
           <span class="grey--text">Profile</span>
-        </v-btn>
+        </NuxtLink>
         <v-btn text class="d-none d-sm-flex" @click="userSignOut">
           <span class="grey--text">Sign Out</span>
         </v-btn>
@@ -142,5 +142,8 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
   padding: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.09;
 }
 </style>
