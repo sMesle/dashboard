@@ -41,6 +41,7 @@ import BarChart from '../components/Charts/BarChart'
 import DataTable from '../components/Table/DataTable'
 import Cards from '../components/Dashboard/Cards'
 export default {
+  middleware: 'auth',
   components: {
     LineChart,
     BarChart,
@@ -57,7 +58,6 @@ export default {
             datasets: [
               {
                 label: 'Website Visiting',
-                // data: [52, 89, 12, 13, 78, 95, 145, 25, 45, 156, 78, 17],
                 backgroundColor: ['rgba(54, 162, 235, 0.5)'],
                 borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
                 borderWidth: 1,
@@ -65,7 +65,6 @@ export default {
               },
               {
                 label: 'Adding New Users',
-                // data: [89, 654, 412, 344, 132, 546, 120, 65, 145, 121, 56, 98],
                 backgroundColor: ['rgba(255, 99, 132, 0.5)'],
                 borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
                 borderWidth: 1,
@@ -81,7 +80,6 @@ export default {
             datasets: [
               {
                 label: 'Yearly Sales',
-                // data: ['159.849', '26.123', '45.235', '121.655', '98.165', '122.157', '198.561', '216.123', '250.696', '354.153', '213.478', '417.359'],
                 borderColor: 'rgba(90, 255, 88, 0.8)',
                 borderWidth: 3,
                 barPercentage: 0.5,
@@ -93,11 +91,6 @@ export default {
         }
       },
       chartOptions: {
-        // legend: { // duplicate key error
-        //   labels: {
-        //     fontColor: '#ccc'
-        //   }
-        // },
         scales: {
           yAxes: [{
             ticks: {

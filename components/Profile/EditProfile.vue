@@ -82,10 +82,7 @@
         </v-col>
       </v-row>
       <v-row class="justify-center">
-        <v-btn
-          :style="{background: $vuetify.theme.themes.dark.background2}"
-          @click.prevent="editChanges()"
-        >
+        <v-btn :style="{background: $vuetify.theme.themes.dark.background2}">
           Edit Changes
         </v-btn>
       </v-row>
@@ -107,9 +104,6 @@ export default {
     }
   },
   methods: {
-    editChanges () {
-      console.log('>>>>') /* eslint no-console: ["error", { allow: ["log", "error"] }] */
-    },
     setLocalUser (field, value) {
       this.$store.dispatch('profile/EDIT_PROFILE', {
         field,

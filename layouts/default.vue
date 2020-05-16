@@ -1,12 +1,12 @@
 <template>
-  <v-app dark :style="{background: $vuetify.theme.themes.dark.background}">
+  <v-app :style="{background: $vuetify.theme.themes.dark.background}">
     <v-navigation-drawer
+      v-if="$store.state.auth.status !== ''"
       v-model="drawer"
       fixed
       app
       :style="{background: $vuetify.theme.themes.dark.background2}"
     >
-      <!-- deneme -->
       <template v-slot:prepend>
         <v-list-item two-line>
           <v-list-item-avatar>
@@ -15,12 +15,11 @@
 
           <v-list-item-content>
             <v-list-item-title>Jane Smith</v-list-item-title>
-            <v-list-item-subtitle>Logged In</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ $store.state.auth.isLogged }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </template>
       <v-divider />
-      <!-- deneme -->
 
       <v-list>
         <v-list-item
@@ -39,6 +38,17 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+
+        <v-list-item router exact @click="userSignOut">
+          <v-list-item-action>
+            <v-icon class="grey--text">
+              exit_to_app
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Sign Out</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -46,8 +56,28 @@
       app
       :style="{background: $vuetify.theme.themes.dark.background2}"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon v-if="$store.state.auth.status !== ''" @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
+      <v-spacer />
+      <template v-if="$store.state.auth.status === ''">
+        <NuxtLink class="nuxt-link" to="/login">
+          <span class="grey--text">Login</span>
+        </NuxtLink>
+        <NuxtLink class="nuxt-link" to="/register">
+          <span class="grey--text">Register</span>
+        </NuxtLink>
+      </template>
+      <template v-else>
+        <v-btn text class="d-none d-sm-flex">
+          <span class="grey--text">Dashboard</span>
+        </v-btn>
+        <v-btn text class="d-none d-sm-flex">
+          <span class="grey--text">Profile</span>
+        </v-btn>
+        <v-btn text class="d-none d-sm-flex" @click="userSignOut">
+          <span class="grey--text">Sign Out</span>
+        </v-btn>
+      </template>
     </v-app-bar>
     <v-content>
       <v-container>
@@ -57,6 +87,7 @@
     <v-footer
       app
       class="justify-center"
+      :style="{background: $vuetify.theme.themes.dark.background1}"
     >
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
@@ -92,6 +123,24 @@ export default {
       ],
       title: 'Nuxt Dashboard'
     }
+  },
+  methods: {
+    async userSignOut () {
+      try {
+        await this.$store.dispatch('auth/SET_AUTH_LOGOUT')
+        await this.$router.push('/')
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.nuxt-link{
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5rem;
+}
+</style>
