@@ -16,7 +16,7 @@
       <v-text-field
         v-model="userInputs.email"
         label="Email"
-        :rules="[rules.email1, rules.email2, rules.required]"
+        :rules="[rules.email, rules.required]"
         type="text"
         name="username"
         hide-details="auto"
@@ -51,6 +51,7 @@ export default {
     }
   },
   data: () => ({
+    email: '',
     userInputs: {
       name: '',
       email: '',
@@ -61,11 +62,15 @@ export default {
       required: value => !!value || 'Required',
       min3: value => (value && value.length >= 3) || 'Min 3 characters',
       min6: value => (value && value.length >= 6) || 'Min 6 characters',
-      email1: v => !!v || 'E-mail is required',
-      email2: v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
-    },
-    valid: true
+      email: v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
+    }
   }),
+  created () {
+    if (this.formType === 'login') {
+      this.userInputs.email = JSON.parse(JSON.stringify(this.$store.state.profile.email))
+      this.userInputs.password = JSON.parse(JSON.stringify(this.$store.state.profile.password))
+    }
+  },
   methods: {
     submitForm () {
       this.$emit('submitForm', this.userInputs)

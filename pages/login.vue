@@ -4,10 +4,6 @@
       <v-col v-if="showAlert">
         <Alert :error-message="errorMessage" />
       </v-col>
-      <v-col>
-        <div>Email: jane@email.com</div>
-        <div>Password: admin123</div>
-      </v-col>
       <Form form-type="login" @submitForm="loginUser" />
     </v-col>
   </v-row>
