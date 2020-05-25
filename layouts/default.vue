@@ -71,7 +71,7 @@
         <NuxtLink class="nuxt-link" to="/dashboard">
           <span class="grey--text">Dashboard</span>
         </NuxtLink>
-        <NuxtLink class="nuxt-link" to="/register">
+        <NuxtLink class="nuxt-link" to="/profile">
           <span class="grey--text">Profile</span>
         </NuxtLink>
         <v-btn text class="d-none d-sm-flex" @click="userSignOut">

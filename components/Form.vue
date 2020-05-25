@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form">
+  <v-form ref="form" @submit.prevent="submitForm">
     <template v-if="formType === 'signup'">
       <v-col>
         <v-text-field
@@ -35,7 +35,7 @@
       />
     </v-col>
     <v-col>
-      <v-btn block color="light-blue darken-3" @click="submitForm">
+      <v-btn block type="submit" color="light-blue darken-3" @click="submitForm">
         {{ formType }}
       </v-btn>
     </v-col>
@@ -51,7 +51,6 @@ export default {
     }
   },
   data: () => ({
-    email: '',
     userInputs: {
       name: '',
       email: '',
@@ -66,12 +65,15 @@ export default {
     }
   }),
   created () {
-    if (this.formType === 'login') {
-      this.userInputs.email = JSON.parse(JSON.stringify(this.$store.state.profile.email))
-      this.userInputs.password = JSON.parse(JSON.stringify(this.$store.state.profile.password))
-    }
+    this.checkFormType()
   },
   methods: {
+    checkFormType () {
+      if (this.formType === 'login') {
+        this.userInputs.email = JSON.parse(JSON.stringify(this.$store.state.profile.email))
+        this.userInputs.password = JSON.parse(JSON.stringify(this.$store.state.profile.password))
+      }
+    },
     submitForm () {
       this.$emit('submitForm', this.userInputs)
     }

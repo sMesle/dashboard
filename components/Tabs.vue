@@ -4,9 +4,9 @@
       <template v-for="(item, i) in material">
         <v-list-item :key="item.content">
           <template v-slot>
-            <v-list-item-action>
+            <v-list-item-action class="action">
               <template v-if="data === 'tasks'">
-                <v-checkbox v-model="tabsCheckArray[i]" value @change="changeCheckStatus(item.id)" />
+                <v-checkbox v-model="tabsCheckArray[i]" class="bluex" data-type="task" value @change="changeCheckStatus(item.id)" />
               </template>
 
               <v-btn v-if="data === 'messages'" text @click="changeStarredStatus(item.id)">
@@ -64,6 +64,7 @@
 
 <script>
 export default {
+  name: 'Tabs',
   props: {
     data: {
       type: String,
@@ -108,3 +109,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+[data-type="task"]{
+  color: red;
+}
+.bluex{
+  color: blue
+}
+</style>

@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name: 'Alert',
   props: {
     errorMessage: {
       type: String,
