@@ -8,6 +8,9 @@ export default {
   CHANGE_FAVORITE (state, id) {
     state.favorites[id].favorite = !state.favorites[id].favorite
     // const index = state.favorites.findIndex(item => item.id === id)
-    // state.favorites.splice(index, 1)
+    // state.favorites.splice(id, 1)
+  },
+  DELETE_BOOKMARK (state, id) {
+    state.bookmarks.splice(id, 1)
   }
 }

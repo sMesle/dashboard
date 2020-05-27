@@ -60,22 +60,7 @@
         </v-card>
       </v-col>
       <v-col cols="12" md="9">
-        <v-card>
-          <v-tabs v-model="tab" grow mobile-break-point="600" show-arrows :background-color="$vuetify.theme.themes.dark.background2">
-            <v-tabs-slider color="blue" />
-            <v-tab v-for="tabName in tabs" :key="tabName.tab">
-              <v-icon small class="mr-2">
-                {{ tabName.icon }}
-              </v-icon>
-              {{ tabName.tab }}
-            </v-tab>
-          </v-tabs>
-          <v-tabs-items v-model="tab">
-            <v-tab-item v-for="tabName in tabs" :key="tabName.tab">
-              <Tabs :data="tabName.tab" />
-            </v-tab-item>
-          </v-tabs-items>
-        </v-card>
+        <Tabs />
       </v-col>
     </v-row>
   </v-container>
@@ -94,13 +79,6 @@ export default {
   },
   data () {
     return {
-      tab: null,
-      tabs: [
-        { tab: 'tasks', icon: 'build', body: 'content 1' },
-        { tab: 'messages', icon: 'message', body: 'content 2' },
-        { tab: 'bookmarks', icon: 'bookmark', body: 'content 3' },
-        { tab: 'favorites', icon: 'favorites', body: 'content 4' }
-      ],
       teamMembers: [
         { id: 0, name: 'Ali Connors', avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg', email: 'aliconnors@ab.co', available: 'available' },
         { id: 1, name: 'Cindy Baker', avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg', email: 'cindybaker@bc.com', available: 'busy' },

@@ -1,28 +1,61 @@
 <template>
-  <v-list :style="{background: $vuetify.theme.themes.dark.background}">
-    <v-list-item-group multiple active-class="blue--text">
-      <template v-for="(item, i) in material">
-        <v-list-item :key="item.content">
-          <template v-slot>
-            <v-list-item-action class="action">
-              <template v-if="data === 'tasks'">
-                <v-checkbox v-model="tabsCheckArray[i]" class="bluex" data-type="task" value @change="changeCheckStatus(item.id)" />
-              </template>
+  <v-card>
+    <v-tabs v-model="tab" grow mobile-break-point="600" show-arrows :background-color="$vuetify.theme.themes.dark.background2">
+      <v-tabs-slider color="blue" />
+      <v-tab v-for="tabName in tabHeader" :key="tabName.tab">
+        <v-icon small class="mr-2">
+          {{ tabName.icon }}
+        </v-icon>
+        {{ tabName.tab }}
+      </v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="tab" :style="{background: $vuetify.theme.themes.dark.background}">
+      <v-tab-item>
+        <v-list :style="{background: $vuetify.theme.themes.dark.background}">
+          <v-list-item-group multiple active-class="blue--text">
+            <v-list-item v-for="(el, i) in tasks" :key="el.id" data-test="task">
+              <v-list-item-action>
+                <v-checkbox v-model="tabsCheckArray[i]" data-test="checkbox" value @change="changeCheckStatus(el.id)" />
+              </v-list-item-action>
+              <v-list-item-content class="grey--text grey--lighten-2">
+                {{ el.content }}
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-tab-item>
 
-              <v-btn v-if="data === 'messages'" text @click="changeStarredStatus(item.id)">
-                <template v-if="!item.starred">
-                  <v-icon color="grey darken-1">
-                    grade
-                  </v-icon>
-                </template>
-                <template v-else>
-                  <v-icon color="yellow">
-                    grade
-                  </v-icon>
-                </template>
-              </v-btn>
+      <v-tab-item>
+        <v-list :style="{background: $vuetify.theme.themes.dark.background}">
+          <v-list-item-group>
+            <v-list-item v-for="el in messages" :key="el.id">
+              <v-list-item-action>
+                <v-btn data-test="btn" text @click="changeStarredStatus(el.id)">
+                  <template v-if="!el.starred">
+                    <v-icon color="grey darken-1">
+                      grade
+                    </v-icon>
+                  </template>
+                  <template v-else>
+                    <v-icon color="yellow">
+                      grade
+                    </v-icon>
+                  </template>
+                </v-btn>
+              </v-list-item-action>
+              <v-list-item-content class="grey--text grey--lighten-2">
+                {{ el.content }}
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-tab-item>
 
-              <template v-if="data === 'bookmarks'">
+      <v-tab-item>
+        <v-list :style="{background: $vuetify.theme.themes.dark.background}">
+          <v-list-item-group>
+            <v-list-item v-for="el in bookmarks" :key="el.id">
+              <v-list-item-action>
                 <v-menu open-on-hover top offset-y>
                   <template v-slot:activator="{on}">
                     <v-icon v-on="on">
@@ -31,44 +64,63 @@
                   </template>
                   <v-list>
                     <v-list-item>
-                      <v-list-item-title>delete</v-list-item-title>
+                      <v-list-item-title @click="deleteBookmark(el.id)">
+                        delete
+                      </v-list-item-title>
                     </v-list-item>
                     <v-list-item>
                       <v-list-item-title>edit</v-list-item-title>
                     </v-list-item>
                   </v-list>
                 </v-menu>
-              </template>
+              </v-list-item-action>
+              <v-list-item-content class="grey--text grey--lighten-2">
+                {{ el.content }}
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-tab-item>
 
-              <v-btn v-if="data === 'favorites'" text @click="changeFavoriteStatus(item.id)">
-                <template v-if="item.favorite">
-                  <v-icon color="red">
-                    mdi-heart
-                  </v-icon>
-                </template>
-                <template v-else>
-                  <v-icon>mdi-heart</v-icon>
-                </template>
-              </v-btn>
-            </v-list-item-action>
-
-            <v-list-item-content class="grey--text grey--lighten-2">
-              {{ item.content }}
-            </v-list-item-content>
-          </template>
-        </v-list-item>
-      </template>
-    </v-list-item-group>
-  </v-list>
+      <v-tab-item>
+        <v-list :style="{background: $vuetify.theme.themes.dark.background}">
+          <v-list-item-group>
+            <v-list-item v-for="el in favorites" :key="el.id">
+              <v-list-item-action>
+                <v-btn text @click="changeFavoriteStatus(el.id)">
+                  <template v-if="el.favorite">
+                    <v-icon color="red">
+                      mdi-heart
+                    </v-icon>
+                  </template>
+                  <template v-else>
+                    <v-icon>mdi-heart</v-icon>
+                  </template>
+                </v-btn>
+              </v-list-item-action>
+              <v-list-item-content class="grey--text grey--lighten-2">
+                {{ el.content }}
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-tab-item>
+    </v-tabs-items>
+  </v-card>
 </template>
 
 <script>
 export default {
   name: 'Tabs',
-  props: {
-    data: {
-      type: String,
-      default: 'tasks'
+  data () {
+    return {
+      tab: null,
+      tabHeader: [
+        { tab: 'tasks', icon: 'build', body: 'content 1' },
+        { tab: 'messages', icon: 'message', body: 'content 2' },
+        { tab: 'bookmarks', icon: 'bookmark', body: 'content 3' },
+        { tab: 'favorites', icon: 'favorites', body: 'content 4' }
+      ]
     }
   },
   computed: {
@@ -77,15 +129,30 @@ export default {
         return this.$store.state.tabs
       }
     },
-    material: {
+    tasks: {
       get () {
-        return this.tabs[this.data]
+        return this.$store.state.tabs.tasks
+      }
+    },
+    messages: {
+      get () {
+        return this.$store.state.tabs.messages
+      }
+    },
+    bookmarks: {
+      get () {
+        return this.$store.state.tabs.bookmarks
+      }
+    },
+    favorites: {
+      get () {
+        return this.$store.state.tabs.favorites
       }
     },
     tabsCheckArray: {
       get () {
         const arr = []
-        this.material.forEach((item) => {
+        this.tasks.forEach((item) => {
           if (item.selected) {
             arr.push(true)
           } else {
@@ -105,16 +172,16 @@ export default {
     },
     changeFavoriteStatus (id) {
       this.$store.commit('tabs/CHANGE_FAVORITE', id)
+    },
+    deleteBookmark (id) {
+      this.$store.commit('tabs/DELETE_BOOKMARK', id)
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-[data-type="task"]{
-  color: red;
-}
-.bluex{
-  color: blue
+<style scoped>
+a{
+  text-decoration: none;
 }
 </style>

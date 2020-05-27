@@ -17,9 +17,6 @@ describe('Form', () => {
     wrapper = shallowMount(Form, {
       localVue,
       store,
-      propsData: {
-        formType: 'login'
-      },
       state: {
         userInputs: {
           email: '',
@@ -43,5 +40,22 @@ describe('Form', () => {
     wrapper.vm.checkFormType = jest.fn().mockName('checkFromType')
     wrapper.vm.checkFormType()
     expect(wrapper.vm.checkFormType).toHaveBeenCalled()
+  })
+
+  it('is button text "login" ', () => {
+    const login = 'login'
+    const btn = wrapper.find('[data-test="button"]')
+    expect(btn.exists()).toBe(true)
+    expect(btn.text()).toMatch(login)
+  })
+
+  it('is button text "register"', () => {
+    const register = 'register'
+    const btn = wrapper.find('[data-test="button"]')
+    wrapper.setProps({ formType: register })
+    expect(wrapper.vm.formType).toBe(register)
+    Vue.nextTick(() => {
+      expect(btn.text()).toMatch(register)
+    })
   })
 })
