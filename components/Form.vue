@@ -1,6 +1,6 @@
 <template>
-  <v-form ref="form" @submit.prevent="submitForm">
-    <template v-if="formType === 'signup'">
+  <v-form ref="form" data-test="form" @submit.prevent="submitForm">
+    <template v-if="formType === 'register'">
       <v-col>
         <v-text-field
           v-model="userInputs.name"
@@ -9,6 +9,7 @@
           type="text"
           name="name"
           hide-details="auto"
+          data-test="name"
         />
       </v-col>
     </template>
@@ -17,9 +18,10 @@
         v-model="userInputs.email"
         label="Email"
         :rules="[rules.email, rules.required]"
-        type="text"
-        name="username"
+        type="email"
+        name="email"
         hide-details="auto"
+        data-test="email"
       />
     </v-col>
     <v-col>
@@ -31,6 +33,7 @@
         type="password"
         name="password"
         hide-details="auto"
+        data-test="password"
         @click:append="passwordVisibility = !passwordVisibility"
       />
     </v-col>

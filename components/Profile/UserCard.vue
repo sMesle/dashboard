@@ -12,7 +12,7 @@
     </v-row>
     <v-row class="mt-9">
       <v-col>
-        <v-card-title class="justify-center">
+        <v-card-title class="justify-center" data-test="name">
           {{ profile.firstName }} {{ profile.lastName }}
           <template v-if="profile.private">
             <v-icon>lock</v-icon>
@@ -21,7 +21,9 @@
         <v-card-subtitle class="text-center">
           @{{ profile.username }}
         </v-card-subtitle>
-        <v-card-text>{{ profile.post }}</v-card-text>
+        <v-card-text data-test="post">
+          {{ profile.post }}
+        </v-card-text>
         <v-card-text class="grey--text grey-lighten-1">
           <v-icon color="grey">
             event

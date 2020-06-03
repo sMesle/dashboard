@@ -10,14 +10,14 @@
       </v-tab>
     </v-tabs>
     <v-tabs-items v-model="tab" :style="{background: $vuetify.theme.themes.dark.background}">
-      <v-tab-item>
+      <v-tab-item data-test="task">
         <v-list :style="{background: $vuetify.theme.themes.dark.background}">
           <v-list-item-group multiple active-class="blue--text">
             <v-list-item v-for="(el, i) in tasks" :key="el.id" data-test="task">
-              <v-list-item-action>
-                <v-checkbox v-model="tabsCheckArray[i]" data-test="checkbox" value @change="changeCheckStatus(el.id)" />
+              <v-list-item-action data-test="task-action">
+                <v-checkbox id="checkbox" v-model="tabsCheckArray[i]" data-test="task-checkbox" value @change="changeCheckStatus(el.id)" />
               </v-list-item-action>
-              <v-list-item-content class="grey--text grey--lighten-2">
+              <v-list-item-content class="grey--text grey--lighten-2" data-test="task-content">
                 {{ el.content }}
               </v-list-item-content>
             </v-list-item>
@@ -25,7 +25,7 @@
         </v-list>
       </v-tab-item>
 
-      <v-tab-item>
+      <v-tab-item data-test="message">
         <v-list :style="{background: $vuetify.theme.themes.dark.background}">
           <v-list-item-group>
             <v-list-item v-for="el in messages" :key="el.id">
@@ -43,7 +43,7 @@
                   </template>
                 </v-btn>
               </v-list-item-action>
-              <v-list-item-content class="grey--text grey--lighten-2">
+              <v-list-item-content class="grey--text grey--lighten-2" data-test="message-content">
                 {{ el.content }}
               </v-list-item-content>
             </v-list-item>
@@ -51,7 +51,7 @@
         </v-list>
       </v-tab-item>
 
-      <v-tab-item>
+      <v-tab-item data-test="bookmark">
         <v-list :style="{background: $vuetify.theme.themes.dark.background}">
           <v-list-item-group>
             <v-list-item v-for="el in bookmarks" :key="el.id">
@@ -74,7 +74,7 @@
                   </v-list>
                 </v-menu>
               </v-list-item-action>
-              <v-list-item-content class="grey--text grey--lighten-2">
+              <v-list-item-content class="grey--text grey--lighten-2" data-test="bookmark-content">
                 {{ el.content }}
               </v-list-item-content>
             </v-list-item>
@@ -82,7 +82,7 @@
         </v-list>
       </v-tab-item>
 
-      <v-tab-item>
+      <v-tab-item data-test="favorite">
         <v-list :style="{background: $vuetify.theme.themes.dark.background}">
           <v-list-item-group>
             <v-list-item v-for="el in favorites" :key="el.id">
@@ -98,7 +98,7 @@
                   </template>
                 </v-btn>
               </v-list-item-action>
-              <v-list-item-content class="grey--text grey--lighten-2">
+              <v-list-item-content class="grey--text grey--lighten-2" data-test="favorite-content">
                 {{ el.content }}
               </v-list-item-content>
             </v-list-item>

@@ -4,7 +4,7 @@
       <v-col v-if="showAlert">
         <Alert :error-message="errorMessage" />
       </v-col>
-      <Form form-type="signup" @submitForm="registerUser" />
+      <Form form-type="register" @submitForm="registerUser" />
     </v-col>
   </v-row>
 </template>

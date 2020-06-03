@@ -6,6 +6,7 @@
     :sort-by="['name', 'deadline', 'progress']"
     hide-default-footer
     class="grey--text text--lighten-2"
+    data-test="data-table"
   >
     <template v-slot:top>
       <v-dialog v-model="dialog">
@@ -42,10 +43,10 @@
             <v-container>
               <v-row justify="end">
                 <v-col cols="6" offset="3">
-                  <v-btn color="blue darken-1" text @click="close">
+                  <v-btn color="blue darken-1" text data-test="dialog-close" @click="close">
                     Cancel
                   </v-btn>
-                  <v-btn text @click="sendStore">
+                  <v-btn text data-test="dialog-save" @click="sendStore">
                     Save
                   </v-btn>
                 </v-col>
@@ -62,10 +63,10 @@
     </template>
 
     <template v-slot:item.actions="{item}">
-      <v-icon small color="grey lighten-2" @click="editProject(item)">
+      <v-icon small color="grey lighten-2" data-test="edit-icon" @click="editProject(item)">
         mdi-pencil
       </v-icon>
-      <v-icon small color="grey lighten-2" @click="deleteProject(item)">
+      <v-icon small color="grey lighten-2" data-test="delete-icon" @click="deleteProject(item)">
         delete
       </v-icon>
     </template>
@@ -91,10 +92,8 @@ export default {
     }
   },
   computed: {
-    projects: {
-      get () {
-        return this.$store.state.projects.projects
-      }
+    projects () {
+      return this.$store.state.projects.projects
     }
   },
   methods: {

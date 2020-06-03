@@ -1,6 +1,13 @@
 <template>
   <v-row>
-    <v-col v-for="card in cardList" :key="card.id" cols="12" md="3" sm="6">
+    <v-col
+      v-for="card in cardList"
+      :key="card.id"
+      cols="12"
+      md="3"
+      sm="6"
+      data-test="col"
+    >
       <v-hover v-slot:default="{ hover }">
         <v-card class="mx-auto" :elevation="hover ? 16 : 2" open-delay="200" :class="{ 'on-hover': hover }">
           <v-parallax :src="card.parallax" height="450">

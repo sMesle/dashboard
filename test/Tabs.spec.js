@@ -25,9 +25,7 @@ describe('Tabs', () => {
         }
       }
     })
-  })
 
-  it('task is checked or unchecked', () => {
     wrapper = shallowMount(Tabs, {
       vuetify,
       mocks: {
@@ -36,18 +34,27 @@ describe('Tabs', () => {
             tabs: {
               tasks: [
                 { id: 0, selected: false, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }
+              ],
+              messages: [
+                { id: 0, starred: true, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }
+              ],
+              bookmarks: [
+                { id: 0, bookmarked: true, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }
+              ],
+              favorites: [
+                { id: 0, favorite: true, content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' }
               ]
             }
           }
         }
       }
     })
-    const tasks = wrapper.findAll('[data-test="task"]')
-    expect(tasks.length).toBe(1)
+  })
 
-    expect(wrapper.contains('[data-test="checkbox"]')).toBe(true)
-
-    const check = wrapper.find('[data-test="checkbox"]')
-    //TODO: expect(check.is('input[type="checkbox"]')).toBe(true)
+  it('all content', () => {
+    expect(wrapper.find('[ data-test="task-content"]').text()).toBe(wrapper.vm.tabs.tasks[0].content)
+    expect(wrapper.find('[ data-test="message-content"]').text()).toBe(wrapper.vm.tabs.messages[0].content)
+    expect(wrapper.find('[ data-test="bookmark-content"]').text()).toBe(wrapper.vm.tabs.bookmarks[0].content)
+    expect(wrapper.find('[ data-test="favorite-content"]').text()).toBe(wrapper.vm.tabs.favorites[0].content)
   })
 })

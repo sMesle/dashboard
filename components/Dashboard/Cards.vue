@@ -1,49 +1,25 @@
 <template>
-  <v-row>
+  <v-row data-test="row">
     <v-col
       v-for="card in cards"
       :key="card.header"
       cols="12"
       md="6"
       lg="3"
+      data-test="col"
     >
-      <v-card
-        class="mx-auto"
-        max-width="344"
-        outlined
-        :style="{background: $vuetify.theme.themes.dark.background1}"
-      >
-        <v-list-item>
-          <v-icon x-large :color="card.fill">
-            {{ card.icon }}
-          </v-icon>
-
-          <v-list-item-content>
-            <v-list-item-title class="text-right grey--text text--lighten-3">
-              {{ card.header }}
-            </v-list-item-title>
-            <v-list-item-subtitle class="title text-right grey--text text--lighten-4">
-              {{ card.info }}
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <hr>
-        <v-card-actions>
-          <v-btn text class="text-lowercase font-weight-thin caption">
-            <v-icon small class="mr-3">
-              {{ card.subicon }}
-            </v-icon>
-            {{ card.action }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+      <Card :card="card" />
     </v-col>
   </v-row>
 </template>
 
 <script>
+import Card from './Card'
 export default {
   name: 'Cards',
+  components: {
+    Card
+  },
   data () {
     return {
       cards: [
