@@ -79,11 +79,11 @@
         </v-btn>
       </template>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
     <v-footer
       app
       class="justify-center"

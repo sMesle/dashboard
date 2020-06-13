@@ -33,7 +33,7 @@ async function userInteract (driver) {
     await signoutTab.click()
 
     // is the index page
-    const h1 = await driver.wait(until.elementLocated(By.css('h1:first-of-type')), 10000)
+    const h1 = await driver.wait(until.elementLocated(By.css('.title:first-of-type')), 10000)
     const h1Text = await h1.getAttribute('textContent')
     expect(h1Text.trim()).toEqual('Trial')
   } finally {}

@@ -37,7 +37,7 @@ describe('Alert', () => {
   })
 
   it('is a Vue instance', () => {
-    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper).toBeTruthy()
     expect(wrapper.findAll('[data-test="col"]').length).toBe(2)
   })
 })

@@ -80,7 +80,7 @@ describe('Cards from Dashboard', () => {
   })
 
   it('is a Vue instance', () => {
-    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper).toBeTruthy()
   })
 
   it('dialog', async () => {

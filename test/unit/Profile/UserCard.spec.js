@@ -56,7 +56,7 @@ describe('Cards from Dashboard', () => {
   })
 
   it('set Data', () => {
-    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper).toBeTruthy()
     expect(wrapper.find('[data-test="post"]').text()).toBe(wrapper.vm.profile.post)
     expect(wrapper.find('[data-test="name"]').text()).toBe(wrapper.vm.profile.firstName + ' ' + wrapper.vm.profile.lastName)
   })

@@ -83,7 +83,7 @@ describe('EditProfile.vue', () => {
   })
 
   it('is component', () => {
-    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper).toBeTruthy()
     expect(takeProfileFromStore).toHaveBeenCalled()
     expect(wrapper.find('[data-test="profile"]').exists()).toBe(true)
     expect(wrapper.find('h2').exists()).toBeTruthy()

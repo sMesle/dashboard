@@ -51,7 +51,7 @@ describe('Cards from Dashboard', () => {
   })
 
   it('set Data', () => {
-    expect(wrapper.isVueInstance()).toBeTruthy()
+    expect(wrapper).toBeTruthy()
     expect(wrapper.find('[data-test="row"]').exists()).toBe(true)
     expect(wrapper.findAll('[data-test="col"]').length).toEqual(1)
   })
