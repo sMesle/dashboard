@@ -38,7 +38,14 @@
       />
     </v-col>
     <v-col>
-      <v-btn block type="submit" color="light-blue darken-3" data-test="button" @click="submitForm">
+      <v-btn
+        block
+        type="submit"
+        class="submit"
+        color="light-blue darken-3"
+        data-test="button"
+        @click="submitForm"
+      >
         {{ formType }}
       </v-btn>
     </v-col>

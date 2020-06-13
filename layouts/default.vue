@@ -60,7 +60,7 @@
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <template v-if="$store.state.auth.status === ''">
-        <NuxtLink class="nuxt-link" to="/login">
+        <NuxtLink class="login nuxt-link" to="/login">
           <span class="grey--text">Login</span>
         </NuxtLink>
         <NuxtLink class="nuxt-link" to="/register">
@@ -71,10 +71,10 @@
         <NuxtLink class="nuxt-link" to="/dashboard">
           <span class="grey--text">Dashboard</span>
         </NuxtLink>
-        <NuxtLink class="nuxt-link" to="/profile">
+        <NuxtLink class="profile nuxt-link" to="/profile">
           <span class="grey--text">Profile</span>
         </NuxtLink>
-        <v-btn text class="d-none d-sm-flex" @click="userSignOut">
+        <v-btn text class="signout d-none d-sm-flex" @click="userSignOut">
           <span class="grey--text">Sign Out</span>
         </v-btn>
       </template>

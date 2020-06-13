@@ -12,7 +12,7 @@
       </v-icon>
 
       <v-list-item-content>
-        <v-list-item-title class="text-right grey--text text--lighten-3">
+        <v-list-item-title class="headerText text-right grey--text text--lighten-3">
           {{ card.header }}
         </v-list-item-title>
         <v-list-item-subtitle class="title text-right grey--text text--lighten-4">

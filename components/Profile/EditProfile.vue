@@ -77,7 +77,7 @@
         </v-col>
       </v-row>
       <v-row class="justify-center">
-        <v-btn type="submit" :style="{background: $vuetify.theme.themes.dark.background2}">
+        <v-btn type="submit" class="editProfile" :style="{background: $vuetify.theme.themes.dark.background2}">
           Edit Changes
         </v-btn>
       </v-row>

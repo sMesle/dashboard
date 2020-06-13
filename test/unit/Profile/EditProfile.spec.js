@@ -20,19 +20,7 @@ describe('EditProfile.vue', () => {
       EDIT_PROFILE: jest.fn().mockName('profile/EDIT_PROFILE')
     }
 
-    store = new Vuex.Store({
-      actions
-      // state: {
-      //   inputs: {
-      //     username: '',
-      //     firstName: '',
-      //     lastName: '',
-      //     email: '',
-      //     company: 'Lorem Ipsum',
-      //     about: ''
-      //   }
-      // }
-    })
+    store = new Vuex.Store({ actions })
 
     vuetify = new Vuetify({
       mocks: {
@@ -88,16 +76,6 @@ describe('EditProfile.vue', () => {
               joined: 'December 2012',
               private: true
             }
-            // state: {
-            //   inputs: {
-            //     username: '',
-            //     firstName: '',
-            //     lastName: '',
-            //     email: '',
-            //     company: 'Lorem Ipsum',
-            //     about: ''
-            //   }
-            // }
           }
         }
       }
