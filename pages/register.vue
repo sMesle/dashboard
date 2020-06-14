@@ -25,7 +25,7 @@ export default {
     async registerUser (registerInfo) {
       try {
         await this.$store.dispatch('auth/SET_AUTH_REGISTER', registerInfo)
-        await this.$router.push({ path: 'dashboard' })
+        await this.$router.push({ path: '/dashboard' })
       } catch (e) {
         throw new Error(e)
       }

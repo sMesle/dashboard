@@ -33,7 +33,7 @@ export default {
       if (loginInfo.email === this.profile.email && loginInfo.password === this.profile.password) {
         try {
           await this.$store.dispatch('auth/SET_AUTH_REQUEST', loginInfo)
-          await this.$router.push({ path: 'dashboard' })
+          await this.$router.push({ path: '/dashboard' })
         } catch (e) {
           throw new Error(e)
         }
