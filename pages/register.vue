@@ -22,11 +22,15 @@ export default {
     errorMessage: ''
   }),
   methods: {
-    registerUser (registerInfo) {
-      this.$store.dispatch('auth/SET_AUTH_REGISTER', registerInfo)
-        .then(() => {
-          this.$router.push({ path: '/dashboard' })
-        })
+    async registerUser (registerInfo) {
+      try {
+        await this.$store.dispatch('auth/SET_AUTH_REGISTER', registerInfo)
+      } catch (e) {
+        throw new Error(e)
+      } finally {
+        // not working on production mode
+        await this.$router.push({ path: '/dashboard' })
+      }
     },
     dismissed () {
       this.showAlert = false
