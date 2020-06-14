@@ -10,7 +10,7 @@
     >
       <v-hover v-slot:default="{ hover }">
         <v-card class="mx-auto" :elevation="hover ? 16 : 2" open-delay="200" :class="{ 'on-hover': hover }">
-          <v-parallax :src="card.parallax ? card.parallax : parallax" height="475">
+          <v-parallax dark :src="card.parallax ? card.parallax : parallax" height="475">
             <v-row align="start">
               <v-col cols="12">
                 <div class="title text-lg-h3 text-h4 font-weight-black white--text ml-n3 mb-4">
@@ -46,42 +46,46 @@
 
 <script>
 export default {
-  parallax: 'https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-  cardList: [
-    {
-      id: 0,
-      title: 'Trial',
-      team: 2,
-      member: 10,
-      membership: 1,
-      price: 0
-    },
-    {
-      id: 1,
-      title: 'Basic',
-      team: 5,
-      member: 25,
-      membership: 1,
-      price: 19,
-      parallax: 'https://images.unsplash.com/photo-1546453667-8a8d2d07bc20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
-    },
-    {
-      id: 2,
-      title: 'Medium',
-      team: 10,
-      member: 50,
-      membership: 1,
-      price: 39
-    },
-    {
-      id: 4,
-      title: 'Premium',
-      team: '10+',
-      member: 100,
-      membership: 2,
-      price: 69
+  data () {
+    return {
+      parallax: 'https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+      cardList: [
+        {
+          id: 0,
+          title: 'Trial',
+          team: 2,
+          member: 10,
+          membership: 1,
+          price: 0
+        },
+        {
+          id: 1,
+          title: 'Basic',
+          team: 5,
+          member: 25,
+          membership: 1,
+          price: 19,
+          parallax: 'https://images.unsplash.com/photo-1546453667-8a8d2d07bc20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
+        },
+        {
+          id: 2,
+          title: 'Medium',
+          team: 10,
+          member: 50,
+          membership: 1,
+          price: 39
+        },
+        {
+          id: 4,
+          title: 'Premium',
+          team: '10+',
+          member: 100,
+          membership: 2,
+          price: 69
+        }
+      ]
     }
-  ]
+  }
 }
 </script>
 

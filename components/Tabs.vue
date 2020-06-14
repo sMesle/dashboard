@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-tabs v-model="tab" grow mobile-break-point="600" show-arrows :background-color="$vuetify.theme.themes.dark.background2">
+    <v-tabs v-model="tab" grow mobile-breakpoint="600" show-arrows :background-color="$vuetify.theme.themes.dark.background2">
       <v-tabs-slider color="blue" />
       <v-tab v-for="tabName in tabHeader" :key="tabName.tab">
         <v-icon small class="mr-2">
