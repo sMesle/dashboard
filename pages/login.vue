@@ -29,14 +29,12 @@ export default {
     }
   },
   methods: {
-    async loginUser (loginInfo) {
+    loginUser (loginInfo) {
       if (loginInfo.email === this.profile.email && loginInfo.password === this.profile.password) {
-        try {
-          await this.$store.dispatch('auth/SET_AUTH_REQUEST', loginInfo)
-          await this.$router.push({ path: '/dashboard' })
-        } catch (e) {
-          throw new Error(e)
-        }
+        this.$store.dispatch('auth/SET_AUTH_REQUEST', loginInfo)
+          .then(() => {
+            this.$router.push({ path: '/dashboard' })
+          })
       } else {
         this.showAlert = true
         this.errorMessage = 'The username and password did not matched.'
