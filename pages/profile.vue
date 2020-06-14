@@ -71,6 +71,7 @@ import EditProfile from '@/components/Profile/EditProfile'
 import UserCard from '@/components/Profile/UserCard'
 import Tabs from '@/components/Tabs'
 export default {
+  name: 'Profile',
   middleware: 'auth',
   components: {
     EditProfile,

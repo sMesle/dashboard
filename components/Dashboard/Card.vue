@@ -34,6 +34,7 @@
 
 <script>
 export default {
+  name: 'Card',
   props: {
     card: {
       type: Object,

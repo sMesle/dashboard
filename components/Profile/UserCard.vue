@@ -48,6 +48,7 @@
 
 <script>
 export default {
+  name: 'UserCard',
   computed: {
     profile: {
       get () {

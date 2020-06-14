@@ -41,6 +41,8 @@ import BarChart from '../components/Charts/BarChart'
 import DataTable from '../components/Table/DataTable'
 import Cards from '../components/Dashboard/Cards'
 export default {
+  name: 'Dashboard',
+  scrollToTop: true,
   middleware: 'auth',
   components: {
     LineChart,

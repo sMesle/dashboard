@@ -46,6 +46,7 @@
 
 <script>
 export default {
+  name: 'Plans',
   data () {
     return {
       parallax: 'https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',

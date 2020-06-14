@@ -75,6 +75,7 @@
 
 <script>
 export default {
+  name: 'DataTable',
   data () {
     return {
       dialog: false,

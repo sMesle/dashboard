@@ -87,6 +87,7 @@
 
 <script>
 export default {
+  name: 'EditProfile',
   data: () => ({
     inputs: {
       username: '',
