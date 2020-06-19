@@ -7,11 +7,10 @@
         class="mb-5"
       >
       <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
+        Inspired by Creative - Tim Nuxt Black Dashboard
         <footer>
-          <small>
-            <em>&mdash;John Johnson</em>
-          </small>
+          <a href="https://demos.creative-tim.com/nuxt-black-dashboard-pro" target="_blank">See the original page</a>
+          <a href="https://github.com/creativetimofficial" target="_blank">GitHub Page</a>
         </footer>
       </blockquote>
     </v-flex>

@@ -1,6 +1,11 @@
 # dashboard
 
-> My sublime Nuxt.js project
+an example of dashboard template is created by using Nuxt and the tests written in Jest and Selenium
+
+Inspired by [Creative-Tim Nuxt Black Dashboard](https://demos.creative-tim.com/nuxt-black-dashboard-pro/)   
+
+[Creative-Tim GitHub Page](https://github.com/creativetimofficial)
+
 
 ## Build Setup
 
@@ -18,5 +23,8 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
+
+### Demo
+[Live Demo](nuxt-dashboard.netlify.app)
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
