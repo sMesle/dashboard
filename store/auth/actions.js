@@ -5,7 +5,9 @@ export default {
     commit('AUTH_REQUEST')
     try {
       const res = await axios.post('/login', user)
-      commit('AUTH_SUCCESS', '', res.config.data)
+      localStorage.setItem('jwtToken', res.config.data)
+      axios.defaults.headers.common.Authorization = `Bearer ${res.config.data}`
+      commit('AUTH_SUCCESS', res.config.data)
     } catch (error) {
       commit('AUTH_ERROR', error)
       if (error.response && error.response.status === 401) {
@@ -18,13 +20,17 @@ export default {
     }
   },
   SET_AUTH_LOGOUT ({ commit }) {
+    localStorage.removeItem('jwtToken')
+    delete axios.defaults.headers.common.Authorization
     commit('AUTH_LOGOUT')
   },
   async SET_AUTH_REGISTER ({ commit }, user) {
     commit('AUTH_REQUEST')
     try {
       const res = await axios.post('/register', user)
-      commit('AUTH_REGISTER', '', res.config.data)
+      localStorage.setItem('jwtToken', res.config.data)
+      axios.defaults.headers.common.Authorization = `Bearer ${res.config.data}`
+      commit('AUTH_REGISTER', res.config.data)
     } catch (error) {
       commit('AUTH_ERROR', error)
       if (error.response && error.response.status === 401) {

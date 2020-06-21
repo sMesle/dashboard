@@ -40,7 +40,6 @@ export default {
       } catch (e) {
         throw new Error(e)
       } finally {
-        // not working on production mode
         await this.$router.push({ path: '/dashboard' })
       }
     },

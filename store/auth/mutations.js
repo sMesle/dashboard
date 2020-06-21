@@ -2,9 +2,8 @@ export default {
   AUTH_REQUEST (state) {
     state.status = 'loading'
   },
-  AUTH_SUCCESS (state, token, user) {
+  AUTH_SUCCESS (state, user) {
     state.status = 'success'
-    state.token = token
     state.user = user
     state.isLogged = 'Logged In'
   },
@@ -14,13 +13,11 @@ export default {
   },
   AUTH_LOGOUT (state) {
     state.status = ''
-    state.token = ''
     state.user = {}
     state.isLogged = 'Logged Out'
   },
-  AUTH_REGISTER (state, token, user) {
+  AUTH_REGISTER (state, user) {
     state.status = 'success'
-    state.token = token
     state.user = user
     state.isLogged = 'Logged In'
   }
