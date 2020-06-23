@@ -14,7 +14,7 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>Jane Smith</v-list-item-title>
+            <v-list-item-title>@{{ $store.state.auth.user.email }}</v-list-item-title>
             <v-list-item-subtitle>{{ $store.state.auth.isLogged }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>

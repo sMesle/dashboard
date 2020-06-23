@@ -109,21 +109,9 @@ export default {
       this.inputs.email = JSON.parse(JSON.stringify(this.$store.state.profile.email))
       this.inputs.company = JSON.parse(JSON.stringify(this.$store.state.profile.company))
       this.inputs.about = JSON.parse(JSON.stringify(this.$store.state.profile.about))
-      // eslint-disable-next-line no-console
-      // console.log(this.inputs)
     },
-    // setLocalUser (field, value) {
-    //   this.$store.dispatch('profile/EDIT_PROFILE', {
-    //     field,
-    //     value
-    //   })
-    // }
     editChanges () {
-      // eslint-disable-next-line no-console
-      console.log(this.inputs)
       this.$store.dispatch('profile/EDIT_PROFILE', this.inputs)
-      // eslint-disable-next-line no-console
-      console.log(this.$store.state.profile)
     }
   }
 }

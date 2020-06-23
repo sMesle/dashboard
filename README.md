@@ -6,22 +6,24 @@ Inspired by [Creative-Tim Nuxt Black Dashboard](https://demos.creative-tim.com/n
 
 [Creative-Tim GitHub Page](https://github.com/creativetimofficial)
 
+## Config
+You need a free [BrowserStack Account](https://www.browserstack.com/) to set your testing devices requires into the .env file from [Selenium with NodeJS](https://www.browserstack.com/automate/node)
 
-## Build Setup
+## Project Setup
 
 ```bash
-# install dependencies
 $ npm install
 
 # serve with hot reload at localhost:3000
 $ npm run dev
+```
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## Testing
+```bash
+$ npm run test
 
-# generate static project
-$ npm run generate
+$ cd test
+$node browserstack
 ```
 
 ### Demo
