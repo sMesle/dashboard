@@ -27,6 +27,6 @@ $node browserstack
 ```
 
 ### Demo
-[Live Demo](nuxt-dashboard.netlify.app)
+[Live Demo](https://nuxt-dashboard.netlify.app)
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
